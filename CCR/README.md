@@ -54,27 +54,30 @@ The script maps PDX1 guides to genomic coordinates, normalizes positive and nega
 - **R:** `4.1.3`
 - **R packages:** `openxlsx-4.2.5.1`, `idr-1.3`, `GenomicRanges-1.46.1`, `Gviz-1.38.3`, `dplyr-1.0.8`, `scales-1.1.1`, `ggplot2-3.3.5`, `cowplot-1.1.1`, `ArchR-1.0.2`, `BSgenome.Hsapiens.UCSC.hg19-1.4.3`, `rtracklayer-1.54.0`, `IRanges-2.28.0`
 
-The script analyzes CRISPR screens targeting the definitive endoderm genes `MIXL1`, `EOMES`, `SOX17`, and `GATA6`. It filters guides, normalizes replicate counts, calculates guide-level effects, evaluates replicate consistency using IDR, merges nearby significant guides, and compares significant regions with chromatin-accessibility and TAD annotations.
+The script analyzes CRISPR screens targeting the definitive endoderm genes `MIXL1`, `EOMES`, `SOX17`, and `GATA6`. It filters guides, normalizes replicate counts, calculates guide-level effects, evaluates replicate consistency using IDR.
 
 ---
 
 ## Workflow
 
 ```text
-FASTQ reads
-    |
-    v
-FASTQ_Clipping
-    |
-    v
-Sequence-count files
-    |
-    v
-joinRNAi.py
-    |
-    v
-Guide count matrix
-    |-----------------------------|
-    v                             v
-CodeforPDX1_Screens.R    CodeforDEgenes_Screens.R
-```
+[File]   FASTQ reads
+             |
+             v
+[Script] FASTQ_Clipping
+             |
+             v
+[File]   Sequence-count files
+             |
+             v
+[Script] joinRNAi.py
+             |
+             v
+[File]   Guide count matrix
+             |
+             |-------------------------------|
+             v                               v
+[Script] CodeforPDX1_Screens.R    [Script] CodeforDEgenes_Screens.R
+             |                               |
+             v                               v
+[Files]  PDX1 guide/region results  [Files] Definitive endoderm guide results
