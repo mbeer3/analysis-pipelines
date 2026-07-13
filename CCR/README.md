@@ -46,11 +46,11 @@ The script maps PDX1 guides to genomic coordinates, normalizes positive and nega
 
 ## Definitive Endoderm Gene CRISPR Screen Analysis
 
-### Guide-Level and Region-Level Analysis
+### Guide-Level Analysis
 
 - **Script:** `CodeforDEgenes_Screens.R`
 - **Input:** Replicate count sheets, off-target-filtered guide lists, ATAC-seq peaks, TAD annotations, and competent or incompetent region annotations
-- **Output:** Normalized guide counts, log2 fold changes, z-scores, IDR results, significant guides, merged regions, BED files, BigWig files, RDS files, CSV files, and plots
+- **Output:** Normalized guide counts, log2 fold changes, z-scores, IDR results, significant guides, RDS files, CSV files, and plots
 - **R:** `4.1.3`
 - **R packages:** `openxlsx-4.2.5.1`, `idr-1.3`, `GenomicRanges-1.46.1`, `Gviz-1.38.3`, `dplyr-1.0.8`, `scales-1.1.1`, `ggplot2-3.3.5`, `cowplot-1.1.1`, `ArchR-1.0.2`, `BSgenome.Hsapiens.UCSC.hg19-1.4.3`, `rtracklayer-1.54.0`, `IRanges-2.28.0`
 
