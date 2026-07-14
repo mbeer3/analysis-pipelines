@@ -81,3 +81,81 @@ The script analyzes CRISPR screens targeting the definitive endoderm genes `MIXL
              |                               |
              v                               v
 [Files]  PDX1 guide/region results  [Files] Definitive endoderm guide results
+
+
+
+# Cell Ranger to SCEPTRE Pipeline
+
+This folder contains scripts for processing a combined high- and low-MOI single-cell CRISPR screen.
+
+## Cell Ranger
+
+* **Script:** `run_cellranger_8.0.0.sh`
+* **Input:** Gene Expression FASTQs, CRISPR Guide Capture FASTQs, libraries CSV files, and a CRISPR Feature Reference
+* **Output:** Filtered feature-barcode matrices, `sceptre_matrix_dirs.txt`, and a combined aggregation
+* **Executable:** `cellranger-8.0.0`
+
+Runs with 
+
+```bash
+./run_cellranger_8.0.0.sh
+```
+The script runs `cellranger count` for each reaction, then combines all runs with `cellranger aggr`
+
+
+## SCEPTRE
+
+* **Script:** `run_sceptre.R`
+* **Input:** Cell Ranger matrices and the TSV files in `input/`
+* **Output:** SCEPTRE results, saved object files, and `sceptre_discovery_results_annotated.csv`
+* **R:** `4.3.1`
+* **R package:** `sceptre-0.10.2`
+
+Runs with 
+
+```bash
+Rscript run_sceptre.R
+```
+
+Input files:
+
+```text
+input/grna_targets.tsv
+input/discovery_pairs.tsv
+input/positive_control_pairs.tsv
+```
+
+These contain:
+
+```text
+1,007 gRNAs
+1,625 discovery pairs
+297 positive-control pairs
+```
+
+The annotated output includes:
+
+```text
+response_id
+grna_target
+region_type
+target_chr
+target_start
+target_end
+design_target_gene_symbol
+n_nonzero_trt
+n_nonzero_cntrl
+pass_qc
+p_value
+log_2_fold_change
+significant
+```
+
+## Workflow
+
+```text
+run_cellranger_8.0.0.sh
+            |
+            v
+      run_sceptre.R
+```
