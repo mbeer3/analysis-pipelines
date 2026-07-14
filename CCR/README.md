@@ -110,7 +110,7 @@ The script runs `cellranger count` for each reaction, then combines all runs wit
 * **Script:** `run_sceptre.R`
 * **Input:** Cell Ranger matrices and the TSV files in `input/`
 * **Output:** SCEPTRE results, saved object files, and `sceptre_discovery_results_annotated.csv`
-* **R:** `4.3.1`
+* **R:** `4.1.3`
 * **R package:** `sceptre-0.10.2`
 
 Runs with 
