@@ -81,10 +81,12 @@ The script analyzes CRISPR screens targeting the definitive endoderm genes `MIXL
              |                               |
              v                               v
 [Files]  PDX1 guide/region results  [Files] Definitive endoderm guide results
+```
+
+---
 
 
-
-# Cell Ranger to SCEPTRE Pipeline
+# CRISPR Perturb-Seq Pipeline
 
 This folder contains scripts for processing a combined high- and low-MOI single-cell CRISPR screen.
 
